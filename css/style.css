@@ -415,7 +415,7 @@ Footer
 /* ==========================================================================
 Contact
 ========================================================================== */ 
-.contact-form input[type="text"], .contact-form textarea { color: #FFF; border: none; outline: none; width: 100%; display: block; margin-bottom: 15px; transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; -webkit-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; border-radius: 0; height: auto; background: #111; font-size: 13px; padding:10px 15px;}
+.contact-form input[type="text"], .contact-form textarea { color: black; border: none; outline: none; width: 100%; display: block; margin-bottom: 15px; transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; -webkit-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; border-radius: 0; height: auto; background: #111; font-size: 13px; padding:10px 15px;}
 .contact-form textarea { min-height: 200px;}
 .contact-form button { text-align: center; color: #fff; padding: 10px 15px; background: transparent; border: 2px solid #FFF; transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; -webkit-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; font-weight: bold; border-radius: 0;}
 .contact-form button i { color: #fff; font-size: 24px;}

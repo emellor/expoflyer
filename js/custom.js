@@ -60,25 +60,77 @@ function toggleIcon(e) {
 $('.panel').on('hidden.bs.collapse', toggleIcon);
 $('.panel').on('shown.bs.collapse', toggleIcon);
 
+
+
+
+function sendMsg(name, email, phone, msg, form) {
+
+    console.log(name);
+    console.log(email);
+    console.log(phone);
+    console.log(msg);
+
+    $.ajax(
+    {
+
+        type: "POST",
+        url: "https://mandrillapp.com/api/1.0/messages/send.json",
+        data: {
+            'key': 'yf0HWszs9JLKcCOaB24Jmw',
+            'message': {
+                'from_email': 'contact@instantview.co',
+                'from_name': 'ExpoFlyer Website',
+                'headers': {
+                    'Reply-To': email
+                },
+                'subject': 'Website Contact Form Submission',
+                'text': 'name: ' + name + ' email: ' + email + ' phone: ' + phone + ' msg: ' + msg,
+                'to': [
+                {
+                    'email': 'e.w.mellor@gmail.com',
+                    'name': 'Edward Mellor',
+                    'type': 'to'
+                }]
+            }
+        }
+    })
+    .done(function (response) {
+
+        alert('Your message has been sent and will will contact you shortly. Thank you!'); // show success message
+
+        $(form).fadeOut(500, function () {
+            form.html(msg).fadeIn();
+        });
+
+        name = "";
+        email = "";
+        phone = "";
+        msg = "";
+
+    })
+    .fail(function (response) {
+        alert('Error sending message.');
+    });
+    return false; // prevent page refresh
+}
+
+
 // --------------------------------------------------------
 //	Banner Form
 // -------------------------------------------------------- 
-$('#banner-form').on('submit', function(e) {
+$('#banner-form').on('submit', function (e) {
     e.preventDefault(); //Prevents default submit
     var form = $(this);
     var post_url = form.attr('action');
     var post_data = form.serialize(); //Serialized the form data for process.php
     $('.form-process').html('<p><i class="fa fa-spinner fa-spin fa-2x"></i> Please Wait...</p>');
-    $.ajax({
-        type: 'POST',
-        url: 'banner-form.php', // Your form script
-        data: post_data,
-        success: function(msg) {
-            $(form).fadeOut(500, function() {
-                form.html(msg).fadeIn();
-            });
-        }
-    });
+
+  //  console.log("2");
+  //  $('#contactUsBanner').click(function () {
+
+        sendMsg($("#banner-name").val(), $("#banner-email").val(), $("#banner-phone").val(), 'Get More Info', form);
+  //  });
+
 });
 
 // --------------------------------------------------------
@@ -90,16 +142,9 @@ $('#middle-form').on('submit', function(e) {
     var post_url = form.attr('action');
     var post_data = form.serialize(); //Serialized the form data for process.php
     $('.form-process-middle').html('<p><i class="fa fa-spinner fa-spin fa-2x"></i> Please Wait...</p>');
-    $.ajax({
-        type: 'POST',
-        url: 'middle-form.php', // Your form script
-        data: post_data,
-        success: function(msg) {
-            $(form).fadeOut(500, function() {
-                form.html(msg).fadeIn();
-            });
-        }
-    });
+    console.log("dsagfhfjhk");
+    sendMsg($("#middle-optin-name").val(), $("#middle-optin-email").val(), $("#middle-optin-phone").val(), 'Subscribe to Newsletter', form);
+        
 });
 
 // --------------------------------------------------------
@@ -111,14 +156,17 @@ $('#contact-form').on('submit', function(e) {
     var post_url = form.attr('action');
     var post_data = form.serialize(); //Serialized the form data for process.php
     $('.form-process-contact').html('<p><i class="fa fa-spinner fa-spin fa-2x"></i> Please Wait...</p>');
-    $.ajax({
-        type: 'POST',
-        url: 'contact-form.php', // Your form script
-        data: post_data,
-        success: function(msg) {
-            $(form).fadeOut(500, function() {
-                form.html(msg).fadeIn();
-            });
-        }
-    });
+
+    sendMsg($("#contact-name").val(), $("#contact-email").val(), $("#contact-phone").val(), $("#contact-message").val(), form);
+
+    //$.ajax({
+    //    type: 'POST',
+    //    url: 'contact-form.php', // Your form script
+    //    data: post_data,
+    //    success: function(msg) {
+    //        $(form).fadeOut(500, function() {
+    //            form.html(msg).fadeIn();
+    //        });
+    //    }
+    //});
 });
