@@ -204,7 +204,7 @@ html, body {height: 100%;}
 /* ==========================================================================
 Intro
 ========================================================================== */ 
-.main-point {clear: both; padding-bottom: 35px; border-bottom:1px solid #F7F7F7; margin-bottom: 40px;} 
+.main-point {clear: both; padding-bottom: 5px; border-bottom:1px solid #F7F7F7;margin-bottom: 10px;} 
 .main-point p {margin-bottom: 0;}
 .main-point i { background-color: #00a8d6; width: 80px; height: 80px; border-radius: 5px; color: #FFF; line-height: 80px; text-align: center; font-size: 42px; display: inline-block; margin-right: 30px; float: left; margin-right: 20px;}
 .main-point h4 { margin-bottom: 10px; font-size: 20px; }
